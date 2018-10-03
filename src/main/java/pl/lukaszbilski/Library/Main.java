@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import pl.lukaszbilski.Library.models.MariadbConnector;
 
 public class Main extends Application {
 
@@ -16,6 +17,10 @@ public class Main extends Application {
         primaryStage.setResizable(false);
         primaryStage.centerOnScreen();
         primaryStage.show();
+
+        MariadbConnector mariadbConnector = MariadbConnector.getInstance();
+
+        mariadbConnector.getConnection();
     }
 
     public static void main(String[] args) {
