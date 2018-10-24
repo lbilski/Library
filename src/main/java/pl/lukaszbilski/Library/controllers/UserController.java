@@ -12,7 +12,9 @@ public class UserController implements Initializable{
     @FXML
     Label welcome;
 
+    MainController main = new MainController();
+
     public void initialize(URL location, ResourceBundle resources) {
-        welcome.setText("Wiiitaj USER:)");
+        welcome.setText("Wiiitaj: )" + main.getActiveUser().getRole());
     }
 }
