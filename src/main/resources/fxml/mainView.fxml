@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.validation.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -80,7 +83,7 @@
                               <Font size="13.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets left="154.0" top="5.0" />
+                              <Insets left="205.0" top="5.0" />
                            </GridPane.margin>
                         </Button>
                         <GridPane GridPane.rowIndex="1">
@@ -123,7 +126,7 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Hasło" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                              <Label text="Hasło" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -131,7 +134,7 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Powtórz hasło" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                              <Label text="Powtórz hasło" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -139,7 +142,7 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Nr. telefonu" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                              <Label text="Nr. telefonu" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -147,7 +150,7 @@
                                     <Insets right="10.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label text="Adres e-mail" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                              <Label text="Adres e-mail" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -170,18 +173,18 @@
                                     <Font size="15.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="regMail" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                              <TextField fx:id="regMail" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="regPhoneNumber" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                              <TextField fx:id="regPhoneNumber" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
                               </TextField>
-                              <PasswordField fx:id="regPassword" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <PasswordField fx:id="regRepeatPassword" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <PasswordField fx:id="regPassword" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <PasswordField fx:id="regRepeatPassword" alignment="CENTER" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                            </children>
                         </GridPane>
                      </children>
