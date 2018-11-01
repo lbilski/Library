@@ -33,8 +33,7 @@ public class MainController{
     @FXML
     PasswordField regPassword, regRepeatPassword, logPassword;
 
-
-    private static User activeUser = new User();
+    private Utils utils = new Utils();
 
     //function will start after pressing button "Zarejestruj", after validation creates new user in database;
     public void registration() {
@@ -46,7 +45,7 @@ public class MainController{
                 statement.setString(1, regLogin.getText());
                 statement.setString(2, regName.getText());
                 statement.setString(3, regSurname.getText());
-                statement.setString(4, Utils.hashPassword(regPassword.getText()));
+                statement.setString(4, utils.hashPassword(regPassword.getText()));
                 statement.setString(5, regMail.getText());
                 statement.setInt(6, Integer.parseInt(regPhoneNumber.getText()));
                 statement.setString(7, "user");
@@ -54,7 +53,7 @@ public class MainController{
                 statement.execute();
                 statement.close();
 
-                Utils.openDialog("Rejestracja", "Użytkownik dodany poprawnie, \nprzejdź do sekcji logowania");
+                utils.openDialog("Rejestracja", "Użytkownik dodany poprawnie, \nprzejdź do sekcji logowania");
                 clearFields();
 
             } catch (SQLException e) {
@@ -65,7 +64,6 @@ public class MainController{
 
     //function will start after pressing button "Zaloguj", checking login, password and role in database.
     public void login(MouseEvent event) throws IOException {
-
         Statement statement = MariadbConnector.getInstance().getNewStatemnt();
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM user WHERE login = '" + logLogin.getText() + "' LIMIT 1");
@@ -73,46 +71,39 @@ public class MainController{
             if (resultSet.next()) {
                 String roleFromDB = resultSet.getString("role");
                 String passwordFromDB = resultSet.getString("password");
+                String nameFromDB = resultSet.getString("name");
 
-                if (Utils.hashPassword(logPassword.getText()).equals(passwordFromDB)) {
+                if (utils.hashPassword(logPassword.getText()).equals(passwordFromDB)) {
                     if (roleFromDB.equals("admin")) {
-                        activeUser.setLogin(resultSet.getString("login"));
-                        activeUser.setName(resultSet.getString("name"));
-                        activeUser.setSurname(resultSet.getString("surname"));
-                        activeUser.setPassword(resultSet.getString("password"));
-                        activeUser.setMail(resultSet.getString("mail"));
-                        activeUser.setPhoneNumber(resultSet.getInt("phoneNumber"));
-                        activeUser.setRole(resultSet.getString("role"));
 
                         Parent mainPage = FXMLLoader.load(getClass().getResource("/fxml/adminView.fxml"));
-                        Scene scene = new Scene(mainPage);
+                        Scene scene = new Scene(mainPage, 800,600);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setTitle("Biblioteka, Witaj " + nameFromDB);
                         stage.setScene(scene);
+                        stage.setMinWidth(800);
+                        stage.setMinHeight(600);
                         stage.setResizable(true);
                         stage.show();
 
-                    } else if (roleFromDB.equals("user")) {
-                        activeUser.setLogin(resultSet.getString("login"));
-                        activeUser.setName(resultSet.getString("name"));
-                        activeUser.setSurname(resultSet.getString("surname"));
-                        activeUser.setPassword(resultSet.getString("password"));
-                        activeUser.setMail(resultSet.getString("mail"));
-                        activeUser.setPhoneNumber(resultSet.getInt("phoneNumber"));
-                        activeUser.setRole(resultSet.getString("role"));
+                    }else if (roleFromDB.equals("user")) {
 
                         Parent mainPage = FXMLLoader.load(getClass().getResource("/fxml/userView.fxml"));
-                        Scene scene = new Scene(mainPage);
+                        Scene scene = new Scene(mainPage, 800, 600);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setTitle("Biblioteka, Witaj " + nameFromDB);
                         stage.setScene(scene);
+                        stage.setMinWidth(800);
+                        stage.setMinHeight(600);
                         stage.setResizable(true);
                         stage.show();
                     }
                 } else {
-                    Utils.openDialog("Logowanie", "Błędne hasło, spróbuj ponownie");
+                    utils.openDialog("Logowanie", "Błędne hasło, spróbuj ponownie");
                     logPassword.setText("");
                 }
             } else {
-                Utils.openDialog("Logowanie", "Podany użytkownik nie istnieje");
+                utils.openDialog("Logowanie", "Podany użytkownik nie istnieje");
                 logLogin.setText("");
                 logPassword.setText("");
             }
@@ -122,12 +113,7 @@ public class MainController{
         }
     }
 
-    //function returns user who is logged.
-    public User getActiveUser(){
-        return activeUser;
-    }
-
-    //validaint all fields in registry form
+    //validating all fields in registry form
     private boolean validating(){
         boolean result = true;
         String errorStyle = "-fx-border-color: red; -fx-opacity: 90%";
@@ -135,12 +121,12 @@ public class MainController{
         clearStyle();
 
         //validating regLogin Field
-        if(Utils.isEmpty(regLogin.getText())){
+        if(utils.isEmpty(regLogin.getText())){
             info.append("Login powinien mieć od 3 do 25 znaków\n");
             regLogin.setStyle(errorStyle);
             regLogin.setTooltip(new Tooltip("Login powinien mieć od 3 do 25 znaków"));
             result = false;
-        }else if(Utils.ifExistInDataBase(regLogin.getText()) != 0){
+        }else if(utils.ifExistInDataBase(regLogin.getText()) != 0){
             info.append("Podany login jest już zajęty\n");
             regLogin.setStyle(errorStyle);
             regLogin.setTooltip(new Tooltip("Podany login jest już zajęty"));
@@ -148,7 +134,7 @@ public class MainController{
         }
 
         //validating regName Field
-        if(Utils.isEmpty(regName.getText())){
+        if(utils.isEmpty(regName.getText())){
             info.append("Imię musi mieć od 3 do 25 znaków\n");
             regName.setStyle(errorStyle);
             regName.setTooltip(new Tooltip("Imię musi mieć od 3 do 25 znaków"));
@@ -156,7 +142,7 @@ public class MainController{
         }
 
         //validating regSurname Field
-        if(Utils.isEmpty(regName.getText())){
+        if(utils.isEmpty(regName.getText())){
             info.append("Nazwisko musi mieć od 3 do 25 znaków\n");
             regSurname.setStyle(errorStyle);
             regSurname.setTooltip(new Tooltip("Nazwisko musi mieć od 3 do 25 znaków"));
@@ -164,7 +150,7 @@ public class MainController{
         }
 
         //validating regMail Field
-        if(Utils.isEmpty(regMail.getText()) || Utils.regexEmail(regMail.getText())){
+        if(utils.isEmpty(regMail.getText()) || utils.regexEmail(regMail.getText())){
             info.append("Wprowadzono niepoprawny format maila\n");
             regMail.setStyle(errorStyle);
             regMail.setTooltip(new Tooltip("Przykładowy mail to: jan@kowalski.pl"));
@@ -172,7 +158,7 @@ public class MainController{
         }
 
         //validating regPhoneNumber Field
-        if(Utils.isEmpty(regPhoneNumber.getText()) || Utils.regexPhone(regPhoneNumber.getText())){
+        if(utils.isEmpty(regPhoneNumber.getText()) || utils.regexPhone(regPhoneNumber.getText())){
             info.append("Wprowadzono niepoprawny format numeru telefonu\n");
             regPhoneNumber.setStyle(errorStyle);
             regPhoneNumber.setTooltip(new Tooltip("Przykładowy numer telefonu to: 123456789"));
@@ -180,7 +166,7 @@ public class MainController{
         }
 
         //validating regPasswords Fields
-        if(Utils.isEmpty(regPassword.getText()) || Utils.isEmpty(regRepeatPassword.getText())){
+        if(utils.isEmpty(regPassword.getText()) || utils.isEmpty(regRepeatPassword.getText())){
             info.append("Hasło musi mieć od 3 do 25 znaków\n");
             regPassword.setStyle(errorStyle);
             regRepeatPassword.setStyle(errorStyle);
@@ -198,7 +184,7 @@ public class MainController{
 
 
         if(!result){
-            Utils.openDialog("Rejestracja", info.toString());
+            utils.openDialog("Rejestracja", info.toString());
         }
 
         return result;
