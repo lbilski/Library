@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="480.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Library.controllers.RentBookController">
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="167.0" prefWidth="279.0" style="-fx-background-color: #f4f4f4;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Data wypożyczenia:">
+               <VBox.margin>
+                  <Insets top="7.0" />
+               </VBox.margin>
+            </Label>
+            <DatePicker />
+            <Label contentDisplay="CENTER" text="Planowana data zwrotu:">
+               <VBox.margin>
+                  <Insets top="7.0" />
+               </VBox.margin>
+            </Label>
+            <DatePicker />
+            <Label text="Ilość:">
+               <VBox.margin>
+                  <Insets top="7.0" />
+               </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="quantity" prefHeight="25.0" prefWidth="34.0" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <Button fx:id="confirmButton" mnemonicParsing="false" onMouseClicked="#confirmRent" text="Wypożycz" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="25.0" top="5.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <top>
+      <VBox alignment="CENTER" prefHeight="103.0" prefWidth="480.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Zamierzasz wypożyczyć książkę:">
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <TextArea fx:id="selectedBook" editable="false" prefHeight="61.0" prefWidth="470.0" wrapText="true">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets left="5.0" right="5.0" top="2.0" />
+               </opaqueInsets>
+            </TextArea>
+         </children>
+      </VBox>
+   </top>
+</BorderPane>

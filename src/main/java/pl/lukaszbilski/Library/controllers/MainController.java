@@ -2,28 +2,22 @@ package pl.lukaszbilski.Library.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import lombok.NonNull;
 import pl.lukaszbilski.Library.models.MariadbConnector;
 import pl.lukaszbilski.Library.models.User;
 import pl.lukaszbilski.Library.models.Utils;
-
 import java.io.IOException;
-import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ResourceBundle;
 
 
 public class MainController{
@@ -34,6 +28,7 @@ public class MainController{
     PasswordField regPassword, regRepeatPassword, logPassword;
 
     private Utils utils = new Utils();
+    private User activeUser = new User();
 
     //function will start after pressing button "Zarejestruj", after validation creates new user in database;
     public void registration() {
@@ -72,12 +67,16 @@ public class MainController{
                 String roleFromDB = resultSet.getString("role");
                 String passwordFromDB = resultSet.getString("password");
                 String nameFromDB = resultSet.getString("name");
+                activeUser.setUser_id(resultSet.getInt("user_id"));
 
                 if (utils.hashPassword(logPassword.getText()).equals(passwordFromDB)) {
                     if (roleFromDB.equals("admin")) {
 
-                        Parent mainPage = FXMLLoader.load(getClass().getResource("/fxml/adminView.fxml"));
-                        Scene scene = new Scene(mainPage, 800,600);
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/adminView.fxml"));
+                        Parent mainPage = (Parent)loader.load();
+                        Scene scene = new Scene(mainPage, 800, 600);
+                        AdminController admin= loader.getController();
+                        admin.activeAdmin = activeUser;
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stage.setTitle("Biblioteka, Witaj " + nameFromDB);
                         stage.setScene(scene);
@@ -88,7 +87,10 @@ public class MainController{
 
                     }else if (roleFromDB.equals("user")) {
 
-                        Parent mainPage = FXMLLoader.load(getClass().getResource("/fxml/userView.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userView.fxml"));
+                        Parent mainPage = (Parent)loader.load();
+                        UserController user = loader.getController();
+                        user.activeUser = activeUser;
                         Scene scene = new Scene(mainPage, 800, 600);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stage.setTitle("Biblioteka, Witaj " + nameFromDB);

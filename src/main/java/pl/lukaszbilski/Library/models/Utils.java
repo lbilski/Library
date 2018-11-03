@@ -2,11 +2,13 @@ package pl.lukaszbilski.Library.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -21,7 +23,6 @@ import java.sql.Statement;
 import java.util.regex.Pattern;
 
 public class Utils {
-
 
     public void openDialog(String title, String message){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -89,7 +90,7 @@ public class Utils {
             ResultSet bookFromDB = statement.executeQuery("SELECT * FROM books");
             while (bookFromDB.next()){
                 books.add(new Book(
-                        bookFromDB.getInt("id"),
+                        bookFromDB.getInt("books_id"),
                         bookFromDB.getString("tytuł"),
                         bookFromDB.getString("autor"),
                         bookFromDB.getString("gatunek"),
