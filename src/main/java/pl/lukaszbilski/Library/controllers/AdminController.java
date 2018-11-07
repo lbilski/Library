@@ -89,6 +89,7 @@ public class AdminController implements Initializable{
             Parent root = loader.load();
             RentBookController rentBook = loader.getController();
             rentBook.candidateBook = candidateBook;
+            rentBook.activeUser = activeAdmin;
             rentBook.initSelectedBook();
             Stage stage = new Stage();
             stage.setScene(new Scene(root, 480, 320));

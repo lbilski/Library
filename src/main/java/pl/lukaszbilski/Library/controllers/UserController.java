@@ -89,6 +89,7 @@ public class UserController implements Initializable{
             Parent root = loader.load();
             RentBookController rentBook = loader.getController();
             rentBook.candidateBook = candidateBook;
+            rentBook.activeUser = activeUser;
             rentBook.initSelectedBook();
             Stage stage = new Stage();
             stage.setScene(new Scene(root, 480, 320));
