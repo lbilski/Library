@@ -73,7 +73,7 @@ public class MainController{
                     if (roleFromDB.equals("admin")) {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/adminView.fxml"));
-                        Parent mainPage = (Parent)loader.load();
+                        Parent mainPage = loader.load();
                         Scene scene = new Scene(mainPage, 800, 600);
                         AdminController admin= loader.getController();
                         admin.activeAdmin = activeUser;

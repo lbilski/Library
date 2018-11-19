@@ -28,6 +28,8 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
+    Statement statement = MariadbConnector.getInstance().getNewStatemnt();
+
     public void openDialog(String title, String message){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -85,10 +87,9 @@ public class Utils {
         stage.show();
     }
 
-    //get all boooks from database
+    //get all books from database
     public ObservableList<Book> getBooks(){
         ObservableList<Book> books = FXCollections.observableArrayList();
-        Statement statement = MariadbConnector.getInstance().getNewStatemnt();
 
         try {
             ResultSet bookFromDB = statement.executeQuery("SELECT * FROM books");
@@ -108,5 +109,36 @@ public class Utils {
             e.printStackTrace();
             return null;
         }
+    }
+
+    //get all rented books from database
+    public ObservableList<RentedBook> getRentedBooks(int activeId){
+        ObservableList<RentedBook> rentedBooks = FXCollections.observableArrayList();
+
+        String query = "SELECT * FROM rented as r JOIN books as b " +
+                "ON r.id_ksiazki = b.books_id " +
+                "WHERE id_klienta = '" + activeId + "' ";
+
+        try {
+            ResultSet rentedBooksFromDatabse = statement.executeQuery(query);
+
+            while(rentedBooksFromDatabse.next()){
+                rentedBooks.add(new RentedBook(
+                        rentedBooksFromDatabse.getInt("rented_id"),
+                        rentedBooksFromDatabse.getInt("id_ksiazki"),
+                        rentedBooksFromDatabse.getDate("data_wypozyczenia"),
+                        rentedBooksFromDatabse.getDate("data_zwrotu"),
+                        rentedBooksFromDatabse.getInt("ilosc"),
+                        rentedBooksFromDatabse.getString("tytuł"),
+                        rentedBooksFromDatabse.getString("autor"),
+                        rentedBooksFromDatabse.getString("gatunek")
+                ));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rentedBooks;
     }
 }

@@ -4,11 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
-import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import pl.lukaszbilski.Library.models.Book;
@@ -98,16 +94,14 @@ public class RentBookController implements Initializable {
             return;
         }
 
-
         try {
-            String queryInsert = "INSERT INTO rented(id_ksiazki, id_klienta, data_wypozyczenia, data_zwrotu, ilosc, potwierdzenie) VALUES(?,?,?,?,?,?)";
+            String queryInsert = "INSERT INTO rented(id_ksiazki, id_klienta, data_wypozyczenia, data_zwrotu, ilosc) VALUES(?,?,?,?,?)";
             PreparedStatement insertStatemnt = statement.getConnection().prepareStatement(queryInsert);
             insertStatemnt.setInt(1, candidateBook.getId());
             insertStatemnt.setInt(2, activeUser.getUser_id());
             insertStatemnt.setDate(3, Date.valueOf(rentalDate.getValue()));
             insertStatemnt.setDate(4, Date.valueOf(returnDate.getValue()));
             insertStatemnt.setInt(5, quantity.getValue());
-            insertStatemnt.setBoolean(6, false);
 
             insertStatemnt.execute();
             insertStatemnt.close();
@@ -133,5 +127,4 @@ public class RentBookController implements Initializable {
     public void initSelectedBook(){
         selectedBook.setText("\"" + candidateBook.getTitle() + "\", " + candidateBook.getAuthor() + ", " + candidateBook.getGendre() + ", Dostępna ilość: " + candidateBook.getQuantity());
     }
-
 }

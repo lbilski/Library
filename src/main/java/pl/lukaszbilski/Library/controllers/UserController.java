@@ -34,19 +34,10 @@ public class UserController implements Initializable{
     @FXML
     TableView<Book> tableBooks;
     @FXML
-    TableColumn<Book, Integer> col_ID;
+    TableColumn<Book, Integer> col_ID, col_publishment, col_sheets, col_quantity;
     @FXML
-    TableColumn<Book, String> col_title;
-    @FXML
-    TableColumn<Book, String> col_author;
-    @FXML
-    TableColumn<Book, String> col_gendre;
-    @FXML
-    TableColumn<Book, Integer> col_publishment;
-    @FXML
-    TableColumn<Book, Integer> col_sheets;
-    @FXML
-    TableColumn<Book, Integer> col_quantity;
+    TableColumn<Book, String> col_title, col_author, col_gendre;
+
 
     private Utils utils = new Utils();
     private Book candidateBook = new Book();
@@ -54,9 +45,9 @@ public class UserController implements Initializable{
     private Statement statement = MariadbConnector.getInstance().getNewStatemnt();
 
 
+
     public void initialize(URL location, final ResourceBundle resources) {
 
-        col_ID.setCellValueFactory(new PropertyValueFactory<Book, Integer>("id"));
         col_title.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
         col_author.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
         col_gendre.setCellValueFactory(new PropertyValueFactory<Book, String>("gendre"));
