@@ -59,7 +59,7 @@ public class MainController{
 
     //function will start after pressing button "Zaloguj", checking login, password and role in database.
     public void login(MouseEvent event) throws IOException {
-        Statement statement = MariadbConnector.getInstance().getNewStatemnt();
+        Statement statement = MariadbConnector.getInstance().getNewStatement();
         try {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM user WHERE login = '" + logLogin.getText() + "' LIMIT 1");
 

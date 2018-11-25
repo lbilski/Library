@@ -35,7 +35,7 @@ public class RentBookController implements Initializable {
     User activeUser;
     private Utils utils = new Utils();
     private ObservableList<Integer> quantityToRent = FXCollections.observableArrayList();
-    private Statement statement = MariadbConnector.getInstance().getNewStatemnt();
+    private Statement statement = MariadbConnector.getInstance().getNewStatement();
 
     public void initialize(URL location, ResourceBundle resources) {
         quantityToRent.add(1);

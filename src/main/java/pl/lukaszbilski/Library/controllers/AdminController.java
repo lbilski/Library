@@ -12,9 +12,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import pl.lukaszbilski.Library.models.*;
 
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -22,6 +24,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable{
@@ -54,7 +57,7 @@ public class AdminController implements Initializable{
     private Book candidateBook = new Book();
     private RentedBook candidateRentedBook = new RentedBook();
     private Utils utils = new Utils();
-    private Statement statement = MariadbConnector.getInstance().getNewStatemnt();
+    private Statement statement = MariadbConnector.getInstance().getNewStatement();
     public User activeAdmin = new User();
 
     public void initialize(URL location, final ResourceBundle resources) {
@@ -106,12 +109,34 @@ public class AdminController implements Initializable{
 
         tabRentedBooks.selectedProperty().addListener((observable, oldValue, newValue) -> {
 
+            LocalDate date = LocalDate.now();
+
             if (newValue) {
                 col_RentTytuł.setCellValueFactory(new PropertyValueFactory<RentedBook, String>("tytuł"));
                 col_RentAutor.setCellValueFactory(new PropertyValueFactory<RentedBook, String>("autor"));
                 col_RentGatunek.setCellValueFactory(new PropertyValueFactory<RentedBook, String>("gatunek"));
                 col_RentDataWypozyczenia.setCellValueFactory(new PropertyValueFactory<RentedBook, Date>("data_wypozyczenia"));
-                col_RentDataZwrotu.setCellValueFactory(new PropertyValueFactory<RentedBook, Date>("data_zwrotu"));
+                col_RentDataZwrotu.setCellValueFactory(new PropertyValueFactory<>("data_zwrotu"));
+                col_RentDataZwrotu.setCellFactory(new Callback<TableColumn<RentedBook, Date>, TableCell<RentedBook, Date>>() {
+                    @Override
+                    public TableCell<RentedBook, Date> call(TableColumn<RentedBook, Date> param) {
+                        return new TableCell<RentedBook, Date>(){
+                            @Override
+                            protected void updateItem(Date item, boolean empty) {
+                                if(item != null){
+                                    setText(item.toString());
+                                    if(item.before(Date.valueOf(date))){
+                                        setStyle("-fx-background-color: #FF0000; -fx-opacity: 80%");
+                                    } else if(item.before(Date.valueOf(date.plusDays(4)))){
+                                        setStyle("-fx-background-color: #ff9900; -fx-opacity: 80%");
+                                    }else {
+                                        setStyle("-fx-background-color: #33ff33; -fx-opacity: 80%");
+                                    }
+                                }
+                            }
+                        };
+                    }
+                });
                 col_RentIlosc.setCellValueFactory(new PropertyValueFactory<RentedBook, Integer>("ilosc"));
 
                 tableRentedBooks.setItems(utils.getRentedBooks(activeAdmin.getUser_id()));
@@ -121,6 +146,8 @@ public class AdminController implements Initializable{
                }
         });
     }
+
+
 
     public void rentBook(){
         try {

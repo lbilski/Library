@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
-    Statement statement = MariadbConnector.getInstance().getNewStatemnt();
+    Statement statement = MariadbConnector.getInstance().getNewStatement();
 
     public void openDialog(String title, String message){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -39,7 +39,7 @@ public class Utils {
     }
 
     public int ifExistInDataBase(String candidate){
-        Statement statement = MariadbConnector.getInstance().getNewStatemnt();
+        Statement statement = MariadbConnector.getInstance().getNewStatement();
         try {
             ResultSet resultSet = statement.executeQuery("SELECT COUNT (*) FROM user WHERE login = '"+ candidate + "'");
             resultSet.next();

@@ -42,7 +42,7 @@ public class UserController implements Initializable{
     private Utils utils = new Utils();
     private Book candidateBook = new Book();
     User activeUser = new User();
-    private Statement statement = MariadbConnector.getInstance().getNewStatemnt();
+    private Statement statement = MariadbConnector.getInstance().getNewStatement();
 
 
 

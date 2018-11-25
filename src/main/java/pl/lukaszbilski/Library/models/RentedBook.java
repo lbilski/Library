@@ -9,7 +9,7 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RentedBook {
+public class RentedBook{
     public int rented_id;
     public int id_ksiazki;
     public Date data_wypozyczenia;
