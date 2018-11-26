@@ -128,7 +128,7 @@ public class MainController{
             regLogin.setStyle(errorStyle);
             regLogin.setTooltip(new Tooltip("Login powinien mieć od 3 do 25 znaków"));
             result = false;
-        }else if(utils.ifExistInDataBase(regLogin.getText()) != 0){
+        }else if(utils.isLoginExist(regLogin.getText())){
             info.append("Podany login jest już zajęty\n");
             regLogin.setStyle(errorStyle);
             regLogin.setTooltip(new Tooltip("Podany login jest już zajęty"));

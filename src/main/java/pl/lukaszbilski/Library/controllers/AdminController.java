@@ -1,7 +1,5 @@
 package pl.lukaszbilski.Library.controllers;
 
-
-import javafx.application.Preloader;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +13,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import pl.lukaszbilski.Library.models.*;
 
-
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -48,11 +44,11 @@ public class AdminController implements Initializable{
     @FXML
     TableView<RentedBook> tableRentedBooks;
     @FXML
-    TableColumn<RentedBook, Integer> col_RentIlosc;
+    TableColumn<RentedBook, Integer> col_RentQuantity;
     @FXML
-    TableColumn<RentedBook, String> col_RentTytuł, col_RentAutor, col_RentGatunek;
+    TableColumn<RentedBook, String> col_RentTitle, col_RentAuthor, col_RentGendre;
     @FXML
-    TableColumn<RentedBook, Date> col_RentDataWypozyczenia, col_RentDataZwrotu;
+    TableColumn<RentedBook, Date> col_RentRentedDate, col_RentReturnDate;
 
     private Book candidateBook = new Book();
     private RentedBook candidateRentedBook = new RentedBook();
@@ -68,7 +64,6 @@ public class AdminController implements Initializable{
         col_publishment.setCellValueFactory(new PropertyValueFactory<Book, Integer>("publishment"));
         col_sheets.setCellValueFactory(new PropertyValueFactory<Book, Integer>("sheets"));
         col_quantity.setCellValueFactory(new PropertyValueFactory<Book, Integer>("quantity"));
-
 
         tableBooks.setItems(utils.getBooks());
 
@@ -108,16 +103,15 @@ public class AdminController implements Initializable{
         });
 
         tabRentedBooks.selectedProperty().addListener((observable, oldValue, newValue) -> {
-
             LocalDate date = LocalDate.now();
 
             if (newValue) {
-                col_RentTytuł.setCellValueFactory(new PropertyValueFactory<RentedBook, String>("tytuł"));
-                col_RentAutor.setCellValueFactory(new PropertyValueFactory<RentedBook, String>("autor"));
-                col_RentGatunek.setCellValueFactory(new PropertyValueFactory<RentedBook, String>("gatunek"));
-                col_RentDataWypozyczenia.setCellValueFactory(new PropertyValueFactory<RentedBook, Date>("data_wypozyczenia"));
-                col_RentDataZwrotu.setCellValueFactory(new PropertyValueFactory<>("data_zwrotu"));
-                col_RentDataZwrotu.setCellFactory(new Callback<TableColumn<RentedBook, Date>, TableCell<RentedBook, Date>>() {
+                col_RentTitle.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
+                col_RentAuthor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+                col_RentGendre.setCellValueFactory(new PropertyValueFactory<>("gatunek"));
+                col_RentRentedDate.setCellValueFactory(new PropertyValueFactory<>("data_wypozyczenia"));
+                col_RentReturnDate.setCellValueFactory(new PropertyValueFactory<>("data_zwrotu"));
+                col_RentReturnDate.setCellFactory(new Callback<TableColumn<RentedBook, Date>, TableCell<RentedBook, Date>>() {
                     @Override
                     public TableCell<RentedBook, Date> call(TableColumn<RentedBook, Date> param) {
                         return new TableCell<RentedBook, Date>(){
@@ -137,7 +131,7 @@ public class AdminController implements Initializable{
                         };
                     }
                 });
-                col_RentIlosc.setCellValueFactory(new PropertyValueFactory<RentedBook, Integer>("ilosc"));
+                col_RentQuantity.setCellValueFactory(new PropertyValueFactory<RentedBook, Integer>("ilosc"));
 
                 tableRentedBooks.setItems(utils.getRentedBooks(activeAdmin.getUser_id()));
 
@@ -147,9 +141,13 @@ public class AdminController implements Initializable{
         });
     }
 
-
-
     public void rentBook(){
+        if(utils.isBookRented(candidateBook.getId(), activeAdmin.getUser_id())){
+            utils.openDialog("Biblioteka", "Masz już wypożyczoną tą pozycję");
+            rentBook.setDisable(true);
+            return;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/rentBook.fxml"));
             Parent root = loader.load();

@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,6 +31,7 @@ public class Utils {
 
     Statement statement = MariadbConnector.getInstance().getNewStatement();
 
+    //function show information dialog
     public void openDialog(String title, String message){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
@@ -38,16 +40,32 @@ public class Utils {
         alert.showAndWait();
     }
 
-    public int ifExistInDataBase(String candidate){
+    //function return true if login is exist in database
+    public boolean isLoginExist(String login){
         Statement statement = MariadbConnector.getInstance().getNewStatement();
+        String query = "SELECT login FROM user WHERE login = '" + login + "' LIMIT 1";
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT COUNT (*) FROM user WHERE login = '"+ candidate + "'");
-            resultSet.next();
-            return resultSet.getInt(1);
-
+            ResultSet resultSet = statement.executeQuery(query);
+            return resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
-            return 1;
+            return true;
+        }
+    }
+
+    public boolean isBookRented(int book_id, int client_id){
+        String query = "SELECT rented_id FROM rented WHERE id_ksiazki = '"+book_id+"' AND id_klienta = '"+client_id+"'";
+
+        try {
+            PreparedStatement preparedStatement = MariadbConnector.getInstance().getConnection().prepareStatement(query);
+            preparedStatement.execute();
+            ResultSet resultSet = preparedStatement.executeQuery(query);
+
+            preparedStatement.close();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true;
         }
     }
 
@@ -59,24 +77,25 @@ public class Utils {
         return !Pattern.matches(".+@(.+)\\..+", email);
     }
 
+    //check phone number is a correct form
     public boolean regexPhone(String phoneNumber) {
         return !Pattern.matches("\\d{9}", phoneNumber);
     }
 
+    //method hashs the password to save it to database in a safe form
     public String hashPassword(String password){
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hasyArray = digest.digest(password.getBytes("UTF-8"));
             return DatatypeConverter.printHexBinary(hasyArray);
 
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
         return null;
     }
 
+    //method logout user to MainView
     public void logout(MouseEvent event) throws IOException{
         Parent mainPage = FXMLLoader.load(getClass().getResource("/fxml/mainView.fxml"));
         Stage stageToClose = (Stage)((Node) event.getSource()).getScene().getWindow();

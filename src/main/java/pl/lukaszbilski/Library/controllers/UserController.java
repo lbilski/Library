@@ -10,26 +10,29 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import pl.lukaszbilski.Library.models.Book;
-import pl.lukaszbilski.Library.models.MariadbConnector;
-import pl.lukaszbilski.Library.models.User;
-import pl.lukaszbilski.Library.models.Utils;
+import javafx.util.Callback;
+import pl.lukaszbilski.Library.models.*;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable{
 
     @FXML
-    TextArea descriptionText;
+    Button logoutButton, rentBook, wypReturnBook, wypExtortRental;
 
     @FXML
-    Button rentBook;
+    TextArea descriptionText, wypDescriptionText;
+
+    @FXML
+    Tab tabRentedBooks;
 
     @FXML
     TableView<Book> tableBooks;
@@ -38,13 +41,20 @@ public class UserController implements Initializable{
     @FXML
     TableColumn<Book, String> col_title, col_author, col_gendre;
 
+    @FXML
+    TableView<RentedBook> tableRentedBooks;
+    @FXML
+    TableColumn<RentedBook, Integer> col_RentQuantity;
+    @FXML
+    TableColumn<RentedBook, String> col_RentTitle, col_RentAuthor, col_RentGendre;
+    @FXML
+    TableColumn<RentedBook, Date> col_RentRentedDate, col_RentReturnDate;
 
-    private Utils utils = new Utils();
     private Book candidateBook = new Book();
-    User activeUser = new User();
+    private RentedBook candidateRentedBook = new RentedBook();
+    private Utils utils = new Utils();
     private Statement statement = MariadbConnector.getInstance().getNewStatement();
-
-
+    public User activeUser = new User();
 
     public void initialize(URL location, final ResourceBundle resources) {
 
@@ -61,8 +71,9 @@ public class UserController implements Initializable{
             public void handle(MouseEvent event) {
                 candidateBook = tableBooks.getSelectionModel().getSelectedItem();
 
+
                 try {
-                    ResultSet description = statement.executeQuery("SELECT opis FROM books WHERE books_id= '" + candidateBook.getId() + "'");
+                    ResultSet description = statement.executeQuery("SELECT opis FROM books WHERE books_id= '" + tableBooks.getSelectionModel().getSelectedItem().getId() + "'");
                     if(description.next()){
                         descriptionText.setText(description.getString("opis"));
                         rentBook.setDisable(false);
@@ -72,9 +83,71 @@ public class UserController implements Initializable{
                 }
             }
         });
+
+        tableRentedBooks.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                candidateRentedBook = tableRentedBooks.getSelectionModel().getSelectedItem();
+
+                try {
+                    ResultSet description = statement.executeQuery("SELECT opis FROM books WHERE books_id= '" + tableRentedBooks.getSelectionModel().getSelectedItem().getId_ksiazki() + "'");
+                    if(description.next()){
+                        wypDescriptionText.setText(description.getString("opis"));
+                        wypReturnBook.setDisable(false);
+                        wypExtortRental.setDisable(false);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        tabRentedBooks.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            LocalDate date = LocalDate.now();
+
+            if (newValue) {
+                col_RentTitle.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
+                col_RentAuthor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+                col_RentGendre.setCellValueFactory(new PropertyValueFactory<>("gatunek"));
+                col_RentRentedDate.setCellValueFactory(new PropertyValueFactory<>("data_wypozyczenia"));
+                col_RentReturnDate.setCellValueFactory(new PropertyValueFactory<>("data_zwrotu"));
+                col_RentReturnDate.setCellFactory(new Callback<TableColumn<RentedBook, Date>, TableCell<RentedBook, Date>>() {
+                    @Override
+                    public TableCell<RentedBook, Date> call(TableColumn<RentedBook, Date> param) {
+                        return new TableCell<RentedBook, Date>(){
+                            @Override
+                            protected void updateItem(Date item, boolean empty) {
+                                if(item != null){
+                                    setText(item.toString());
+                                    if(item.before(Date.valueOf(date))){
+                                        setStyle("-fx-background-color: #FF0000; -fx-opacity: 80%");
+                                    } else if(item.before(Date.valueOf(date.plusDays(4)))){
+                                        setStyle("-fx-background-color: #ff9900; -fx-opacity: 80%");
+                                    }else {
+                                        setStyle("-fx-background-color: #33ff33; -fx-opacity: 80%");
+                                    }
+                                }
+                            }
+                        };
+                    }
+                });
+                col_RentQuantity.setCellValueFactory(new PropertyValueFactory<RentedBook, Integer>("ilosc"));
+
+                tableRentedBooks.setItems(utils.getRentedBooks(activeUser.getUser_id()));
+
+                wypExtortRental.setDisable(true);
+                wypReturnBook.setDisable(true);
+            }
+        });
     }
 
     public void rentBook(){
+        if(utils.isBookRented(candidateBook.getId(), activeUser.getUser_id())){
+            utils.openDialog("Biblioteka", "Masz już wypożyczoną tą pozycję");
+            rentBook.setDisable(true);
+            return;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/rentBook.fxml"));
             Parent root = loader.load();
@@ -91,7 +164,7 @@ public class UserController implements Initializable{
         }
 
         try {
-            initialize(new URL("file:/" + "../fxml/userView.fxml"), null);
+            initialize(new URL("file:/" + "../fxml/adminView.fxml"), null);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
