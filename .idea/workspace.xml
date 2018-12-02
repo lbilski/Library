@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/ReturnBookController.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/AdminController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/MainController.java" afterPath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/MainController.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Utils.java" afterPath="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Utils.java" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/adminView.fxml" afterPath="$PROJECT_DIR$/src/main/resources/fxml/adminView.fxml" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/userView.fxml" afterPath="$PROJECT_DIR$/src/main/resources/fxml/userView.fxml" />
     </list>
@@ -96,8 +95,8 @@
       <file leaf-file-name="Utils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Utils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+            <state relative-caret-position="1530">
+              <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
               <folding>
                 <element signature="method#openDialog#0;class#Utils#0" expanded="false" />
                 <element signature="e#2438#2439#0" expanded="true" />
@@ -108,8 +107,6 @@
                 <element signature="e#2785#2786#0" expanded="true" />
                 <element signature="method#hashPassword#0;class#Utils#0" expanded="false" />
                 <element signature="method#logout#0;class#Utils#0" expanded="false" />
-                <element signature="method#getBooks#0;class#Utils#0" expanded="false" />
-                <element signature="method#getRentedBooks#0;class#Utils#0" expanded="false" />
                 <marker date="1543274961206" expanded="true" signature="1489:1549" ph="SELECT login... user" />
                 <marker date="1543274961206" expanded="true" signature="1863:1912" ph="SELECT rente... rented" />
                 <marker date="1543274961206" expanded="true" signature="1863:1943" ph="SELECT rente... rented" />
@@ -122,8 +119,20 @@
       <file leaf-file-name="RentedBook.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/RentedBook.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+            <state relative-caret-position="272">
+              <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Book.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -132,8 +141,8 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,32 +150,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="147" column="19" lean-forward="true" selection-start-line="147" selection-start-column="19" selection-end-line="147" selection-end-column="19" />
+            <state relative-caret-position="80">
+              <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="163" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4902#5808#0" expanded="true" />
-                <element signature="e#5807#5808#0" expanded="true" />
-                <marker date="1543275111351" expanded="true" signature="2689:2794" ph="SELECT opis books" />
-                <marker date="1543275111351" expanded="true" signature="3459:3578" ph="SELECT opis books" />
+                <element signature="e#6958#7752#0" expanded="true" />
+                <element signature="e#7751#7752#0" expanded="true" />
+                <marker date="1543751099056" expanded="true" signature="2689:2794" ph="SELECT opis books" />
+                <marker date="1543751099056" expanded="true" signature="3459:3578" ph="SELECT opis books" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state relative-caret-position="561">
+              <caret line="54" column="7" lean-forward="false" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
               <folding>
-                <element signature="e#4900#5806#0" expanded="true" />
-                <element signature="e#5805#5806#0" expanded="true" />
-                <marker date="1543275111306" expanded="true" signature="2687:2792" ph="SELECT opis books" />
-                <marker date="1543275111306" expanded="true" signature="3457:3576" ph="SELECT opis books" />
+                <element signature="e#6995#7789#0" expanded="true" />
+                <element signature="e#7788#7789#0" expanded="true" />
+                <marker date="1543751869974" expanded="true" signature="2687:2792" ph="SELECT opis books" />
+                <marker date="1543751869974" expanded="true" signature="3457:3576" ph="SELECT opis books" />
               </folding>
             </state>
           </provider>
@@ -175,13 +184,28 @@
       <file leaf-file-name="RentBookController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/RentBookController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="87" column="5" lean-forward="true" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+            <state relative-caret-position="-901">
+              <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="83" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#checkRentalDate#0;class#RentBookController#0" expanded="false" />
-                <element signature="method#checkReturnDate#0;class#RentBookController#0" expanded="false" />
-                <element signature="method#confirmRent#0;class#RentBookController#0" expanded="false" />
+                <marker date="1542667548279" expanded="true" signature="3524:3623" ph="INSERT INTO rented... " />
+                <marker date="1542667548279" expanded="true" signature="4261:4312" ph="UPDATE books... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReturnBookController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/ReturnBookController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="434">
+              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#confirmReturn#0;class#ReturnBookController#0" expanded="false" />
+                <element signature="method#setQuantity#0;class#ReturnBookController#0" expanded="false" />
+                <element signature="method#setBook#0;class#ReturnBookController#0" expanded="false" />
+                <element signature="method#updateBooks#0;class#ReturnBookController#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -200,8 +224,8 @@
       <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="84" column="49" lean-forward="true" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
+            <state relative-caret-position="1020">
+              <caret line="84" column="49" lean-forward="false" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#registration#0;class#MainController#0" expanded="false" />
@@ -259,10 +283,11 @@
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/MariadbConnector.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/MariadbConnector.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/RentedBook.java" />
-        <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/RentBookController.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/MainController.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/Controller.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Utils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/RentBookController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/ReturnBookController.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/UserController.java" />
       </list>
@@ -318,10 +343,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -392,6 +415,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -656,12 +681,15 @@
       <workItem from="1542658301863" duration="184000" />
       <workItem from="1543147677395" duration="7586000" />
       <workItem from="1543183160670" duration="1596000" />
-      <workItem from="1543263944860" duration="11155000" />
+      <workItem from="1543263944860" duration="11221000" />
+      <workItem from="1543424652453" duration="1398000" />
+      <workItem from="1543602310432" duration="6007000" />
+      <workItem from="1543747403278" duration="4490000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171150000" />
+    <option name="totallyTimeSpent" value="183111000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -690,7 +718,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27345416" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28304905" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.4935275" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.4935275" order="1" side_tool="false" content_ui="tabs" />
@@ -751,27 +779,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/adminView.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4902#5808#0" expanded="true" />
-            <element signature="e#5807#5808#0" expanded="true" />
-            <marker date="1543275111351" expanded="true" signature="2689:2794" ph="SELECT opis books" />
-            <marker date="1543275111351" expanded="true" signature="3459:3578" ph="SELECT opis books" />
+            <element signature="e#6958#7752#0" expanded="true" />
+            <element signature="e#7751#7752#0" expanded="true" />
+            <marker date="1543751099056" expanded="true" signature="2689:2794" ph="SELECT opis books" />
+            <marker date="1543751099056" expanded="true" signature="3459:3578" ph="SELECT opis books" />
           </folding>
         </state>
       </provider>
@@ -781,10 +798,10 @@
         <state relative-caret-position="187">
           <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding>
-            <element signature="e#4900#5806#0" expanded="true" />
-            <element signature="e#5805#5806#0" expanded="true" />
-            <marker date="1543275111306" expanded="true" signature="2687:2792" ph="SELECT opis books" />
-            <marker date="1543275111306" expanded="true" signature="3457:3576" ph="SELECT opis books" />
+            <element signature="e#6995#7789#0" expanded="true" />
+            <element signature="e#7788#7789#0" expanded="true" />
+            <marker date="1543751869974" expanded="true" signature="2687:2792" ph="SELECT opis books" />
+            <marker date="1543751869974" expanded="true" signature="3457:3576" ph="SELECT opis books" />
           </folding>
         </state>
       </provider>
@@ -803,8 +820,6 @@
             <element signature="e#2785#2786#0" expanded="true" />
             <element signature="method#hashPassword#0;class#Utils#0" expanded="false" />
             <element signature="method#logout#0;class#Utils#0" expanded="false" />
-            <element signature="method#getBooks#0;class#Utils#0" expanded="false" />
-            <element signature="method#getRentedBooks#0;class#Utils#0" expanded="false" />
             <marker date="1543274961206" expanded="true" signature="1489:1549" ph="SELECT login... user" />
             <marker date="1543274961206" expanded="true" signature="1863:1912" ph="SELECT rente... rented" />
             <marker date="1543274961206" expanded="true" signature="1863:1943" ph="SELECT rente... rented" />
@@ -833,11 +848,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#656#657#0" expanded="false" />
-            <element signature="e#684#685#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -847,10 +858,10 @@
           <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4902#5808#0" expanded="true" />
-            <element signature="e#5807#5808#0" expanded="true" />
-            <marker date="1543275111351" expanded="true" signature="2689:2794" ph="SELECT opis books" />
-            <marker date="1543275111351" expanded="true" signature="3459:3578" ph="SELECT opis books" />
+            <element signature="e#6958#7752#0" expanded="true" />
+            <element signature="e#7751#7752#0" expanded="true" />
+            <marker date="1543751099056" expanded="true" signature="2689:2794" ph="SELECT opis books" />
+            <marker date="1543751099056" expanded="true" signature="3459:3578" ph="SELECT opis books" />
           </folding>
         </state>
       </provider>
@@ -860,10 +871,10 @@
         <state relative-caret-position="34">
           <caret line="2" column="29" lean-forward="true" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
           <folding>
-            <element signature="e#4900#5806#0" expanded="true" />
-            <element signature="e#5805#5806#0" expanded="true" />
-            <marker date="1543275111306" expanded="true" signature="2687:2792" ph="SELECT opis books" />
-            <marker date="1543275111306" expanded="true" signature="3457:3576" ph="SELECT opis books" />
+            <element signature="e#6995#7789#0" expanded="true" />
+            <element signature="e#7788#7789#0" expanded="true" />
+            <marker date="1543751869974" expanded="true" signature="2687:2792" ph="SELECT opis books" />
+            <marker date="1543751869974" expanded="true" signature="3457:3576" ph="SELECT opis books" />
           </folding>
         </state>
       </provider>
@@ -882,8 +893,6 @@
             <element signature="e#2785#2786#0" expanded="true" />
             <element signature="method#hashPassword#0;class#Utils#0" expanded="false" />
             <element signature="method#logout#0;class#Utils#0" expanded="false" />
-            <element signature="method#getBooks#0;class#Utils#0" expanded="false" />
-            <element signature="method#getRentedBooks#0;class#Utils#0" expanded="false" />
             <marker date="1543274961206" expanded="true" signature="1489:1549" ph="SELECT login... user" />
             <marker date="1543274961206" expanded="true" signature="1863:1912" ph="SELECT rente... rented" />
             <marker date="1543274961206" expanded="true" signature="1863:1943" ph="SELECT rente... rented" />
@@ -912,11 +921,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="18" column="28" lean-forward="false" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#656#657#0" expanded="false" />
-            <element signature="e#684#685#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -934,8 +939,6 @@
             <element signature="e#2785#2786#0" expanded="true" />
             <element signature="method#hashPassword#0;class#Utils#0" expanded="false" />
             <element signature="method#logout#0;class#Utils#0" expanded="false" />
-            <element signature="method#getBooks#0;class#Utils#0" expanded="false" />
-            <element signature="method#getRentedBooks#0;class#Utils#0" expanded="false" />
             <marker date="1543274961206" expanded="true" signature="1489:1549" ph="SELECT login... user" />
             <marker date="1543274961206" expanded="true" signature="1863:1912" ph="SELECT rente... rented" />
             <marker date="1543274961206" expanded="true" signature="1863:1943" ph="SELECT rente... rented" />
@@ -947,14 +950,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/User.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/MariadbConnector.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/mainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3451">
           <caret line="203" column="0" lean-forward="true" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/MainController.java">
@@ -975,11 +978,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#656#657#0" expanded="false" />
-            <element signature="e#684#685#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1005,37 +1004,33 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/mainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="11" lean-forward="false" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#656#657#0" expanded="false" />
-            <element signature="e#684#685#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/mainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="11" lean-forward="true" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/MainController.java">
@@ -1053,14 +1048,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/mainView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="33" lean-forward="true" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/MariadbConnector.java" />
@@ -1093,14 +1088,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/userView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-269">
           <caret line="17" column="56" lean-forward="false" selection-start-line="17" selection-start-column="56" selection-end-line="17" selection-end-column="56" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/javafx-src.zip!/javafx/util/Callback.java">
@@ -1111,23 +1106,15 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/RentedController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/adminView.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
           <caret line="70" column="24" lean-forward="false" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/MariadbConnector.java">
@@ -1138,24 +1125,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/RentBookController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="87" column="5" lean-forward="true" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#checkRentalDate#0;class#RentBookController#0" expanded="false" />
-            <element signature="method#checkReturnDate#0;class#RentBookController#0" expanded="false" />
-            <element signature="method#confirmRent#0;class#RentBookController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1167,21 +1140,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="50" column="34" lean-forward="true" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/Controller.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_102/javafx-src.zip!/javafx/fxml/Initializable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="47" column="50" lean-forward="true" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1195,8 +1158,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="84" column="49" lean-forward="true" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
+        <state relative-caret-position="1020">
+          <caret line="84" column="49" lean-forward="false" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#registration#0;class#MainController#0" expanded="false" />
@@ -1209,26 +1172,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/RentedBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-          <folding />
+        <state relative-caret-position="272">
+          <caret line="20" column="1" lean-forward="false" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/models/Utils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="64" column="36" lean-forward="false" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+        <state relative-caret-position="1530">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
           <folding>
             <element signature="method#openDialog#0;class#Utils#0" expanded="false" />
             <element signature="e#2438#2439#0" expanded="true" />
@@ -1239,8 +1212,6 @@
             <element signature="e#2785#2786#0" expanded="true" />
             <element signature="method#hashPassword#0;class#Utils#0" expanded="false" />
             <element signature="method#logout#0;class#Utils#0" expanded="false" />
-            <element signature="method#getBooks#0;class#Utils#0" expanded="false" />
-            <element signature="method#getRentedBooks#0;class#Utils#0" expanded="false" />
             <marker date="1543274961206" expanded="true" signature="1489:1549" ph="SELECT login... user" />
             <marker date="1543274961206" expanded="true" signature="1863:1912" ph="SELECT rente... rented" />
             <marker date="1543274961206" expanded="true" signature="1863:1943" ph="SELECT rente... rented" />
@@ -1249,29 +1220,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/UserController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/RentBookController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="-901">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="83" />
           <folding>
-            <element signature="e#4900#5806#0" expanded="true" />
-            <element signature="e#5805#5806#0" expanded="true" />
-            <marker date="1543275111306" expanded="true" signature="2687:2792" ph="SELECT opis books" />
-            <marker date="1543275111306" expanded="true" signature="3457:3576" ph="SELECT opis books" />
+            <element signature="imports" expanded="true" />
+            <marker date="1542667548279" expanded="true" signature="3524:3623" ph="INSERT INTO rented... " />
+            <marker date="1542667548279" expanded="true" signature="4261:4312" ph="UPDATE books... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/ReturnBookController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="434">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#confirmReturn#0;class#ReturnBookController#0" expanded="false" />
+            <element signature="method#setQuantity#0;class#ReturnBookController#0" expanded="false" />
+            <element signature="method#setBook#0;class#ReturnBookController#0" expanded="false" />
+            <element signature="method#updateBooks#0;class#ReturnBookController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="147" column="19" lean-forward="true" selection-start-line="147" selection-start-column="19" selection-end-line="147" selection-end-column="19" />
+        <state relative-caret-position="80">
+          <caret line="141" column="0" lean-forward="false" selection-start-line="141" selection-start-column="0" selection-end-line="163" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4902#5808#0" expanded="true" />
-            <element signature="e#5807#5808#0" expanded="true" />
-            <marker date="1543275111351" expanded="true" signature="2689:2794" ph="SELECT opis books" />
-            <marker date="1543275111351" expanded="true" signature="3459:3578" ph="SELECT opis books" />
+            <element signature="e#6958#7752#0" expanded="true" />
+            <element signature="e#7751#7752#0" expanded="true" />
+            <marker date="1543751099056" expanded="true" signature="2689:2794" ph="SELECT opis books" />
+            <marker date="1543751099056" expanded="true" signature="3459:3578" ph="SELECT opis books" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/lukaszbilski/Library/controllers/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="54" column="7" lean-forward="false" selection-start-line="54" selection-start-column="7" selection-end-line="54" selection-end-column="7" />
+          <folding>
+            <element signature="e#6995#7789#0" expanded="true" />
+            <element signature="e#7788#7789#0" expanded="true" />
+            <marker date="1543751869974" expanded="true" signature="2687:2792" ph="SELECT opis books" />
+            <marker date="1543751869974" expanded="true" signature="3457:3576" ph="SELECT opis books" />
           </folding>
         </state>
       </provider>

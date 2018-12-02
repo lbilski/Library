@@ -83,7 +83,7 @@
                            <children>
                               <VBox layoutX="603.0" layoutY="22.0" AnchorPane.rightAnchor="5.0">
                                  <children>
-                                    <Button fx:id="wypReturnBook" layoutX="666.0" layoutY="22.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Zwróć" AnchorPane.rightAnchor="5.0">
+                                    <Button fx:id="wypReturnBook" layoutX="666.0" layoutY="22.0" mnemonicParsing="false" onMouseClicked="#returnBook" prefHeight="25.0" prefWidth="192.0" text="Zwróć" AnchorPane.rightAnchor="5.0">
                                        <VBox.margin>
                                           <Insets bottom="10.0" />
                                        </VBox.margin>

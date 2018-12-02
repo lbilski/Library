@@ -106,37 +106,7 @@ public class UserController implements Initializable{
             LocalDate date = LocalDate.now();
 
             if (newValue) {
-                col_RentTitle.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
-                col_RentAuthor.setCellValueFactory(new PropertyValueFactory<>("autor"));
-                col_RentGendre.setCellValueFactory(new PropertyValueFactory<>("gatunek"));
-                col_RentRentedDate.setCellValueFactory(new PropertyValueFactory<>("data_wypozyczenia"));
-                col_RentReturnDate.setCellValueFactory(new PropertyValueFactory<>("data_zwrotu"));
-                col_RentReturnDate.setCellFactory(new Callback<TableColumn<RentedBook, Date>, TableCell<RentedBook, Date>>() {
-                    @Override
-                    public TableCell<RentedBook, Date> call(TableColumn<RentedBook, Date> param) {
-                        return new TableCell<RentedBook, Date>(){
-                            @Override
-                            protected void updateItem(Date item, boolean empty) {
-                                if(item != null){
-                                    setText(item.toString());
-                                    if(item.before(Date.valueOf(date))){
-                                        setStyle("-fx-background-color: #FF0000; -fx-opacity: 80%");
-                                    } else if(item.before(Date.valueOf(date.plusDays(4)))){
-                                        setStyle("-fx-background-color: #ff9900; -fx-opacity: 80%");
-                                    }else {
-                                        setStyle("-fx-background-color: #33ff33; -fx-opacity: 80%");
-                                    }
-                                }
-                            }
-                        };
-                    }
-                });
-                col_RentQuantity.setCellValueFactory(new PropertyValueFactory<RentedBook, Integer>("ilosc"));
-
-                tableRentedBooks.setItems(utils.getRentedBooks(activeUser.getUser_id()));
-
-                wypExtortRental.setDisable(true);
-                wypReturnBook.setDisable(true);
+                setListOfRentedBooks();
             }
         });
     }
@@ -171,7 +141,68 @@ public class UserController implements Initializable{
         rentBook.setDisable(true);
     }
 
+    public void returnBook(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/returnBook.fxml"));
+            Parent root = loader.load();
+            ReturnBookController controller = loader.getController();
+            controller.rentedBook = candidateRentedBook;
+            controller.setQuantity();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        setListOfRentedBooks();
+
+        try {
+            initialize(new URL("file:/" + "../fxml/adminView.fxml"), null);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        wypReturnBook.setDisable(true);
+    }
+
     public void logout(MouseEvent event) throws IOException {
         utils.logout(event);
+    }
+
+    public void setListOfRentedBooks(){
+        LocalDate date = LocalDate.now();
+
+        col_RentTitle.setCellValueFactory(new PropertyValueFactory<>("tytuł"));
+        col_RentAuthor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+        col_RentGendre.setCellValueFactory(new PropertyValueFactory<>("gatunek"));
+        col_RentRentedDate.setCellValueFactory(new PropertyValueFactory<>("data_wypozyczenia"));
+        col_RentReturnDate.setCellValueFactory(new PropertyValueFactory<>("data_zwrotu"));
+        col_RentReturnDate.setCellFactory(new Callback<TableColumn<RentedBook, Date>, TableCell<RentedBook, Date>>() {
+            @Override
+            public TableCell<RentedBook, Date> call(TableColumn<RentedBook, Date> param) {
+                return new TableCell<RentedBook, Date>(){
+                    @Override
+                    protected void updateItem(Date item, boolean empty) {
+                        if(item != null){
+                            setText(item.toString());
+                            if(item.before(Date.valueOf(date))){
+                                setStyle("-fx-background-color: #FF0000; -fx-opacity: 80%");
+                            } else if(item.before(Date.valueOf(date.plusDays(4)))){
+                                setStyle("-fx-background-color: #ff9900; -fx-opacity: 80%");
+                            }else {
+                                setStyle("-fx-background-color: #33ff33; -fx-opacity: 80%");
+                            }
+                        }
+                    }
+                };
+            }
+        });
+        col_RentQuantity.setCellValueFactory(new PropertyValueFactory<RentedBook, Integer>("ilosc"));
+
+        tableRentedBooks.setItems(utils.getRentedBooks(activeUser.getUser_id()));
+
+        wypExtortRental.setDisable(true);
+        wypReturnBook.setDisable(true);
     }
 }

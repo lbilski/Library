@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="183.0" prefWidth="481.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.lukaszbilski.Library.controllers.ReturnBookController">
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="57.0" prefWidth="480.0" style="-fx-background-color: #f4f4f4;" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Ilość:">
+               <VBox.margin>
+                  <Insets top="7.0" />
+               </VBox.margin>
+            </Label>
+            <ChoiceBox fx:id="quantity" prefHeight="25.0" prefWidth="34.0" />
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <VBox alignment="CENTER" prefHeight="74.0" prefWidth="481.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Czy potwierdzasz zwrot książki ?">
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <Button fx:id="confirmButton" mnemonicParsing="false" onMouseClicked="#confirmReturn" text="Zwróć" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>
