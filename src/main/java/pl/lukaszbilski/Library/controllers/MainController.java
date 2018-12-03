@@ -64,13 +64,18 @@ public class MainController{
             ResultSet resultSet = statement.executeQuery("SELECT * FROM user WHERE login = '" + logLogin.getText() + "' LIMIT 1");
 
             if (resultSet.next()) {
-                String roleFromDB = resultSet.getString("role");
-                String passwordFromDB = resultSet.getString("password");
-                String nameFromDB = resultSet.getString("name");
                 activeUser.setUser_id(resultSet.getInt("user_id"));
+                activeUser.setLogin(resultSet.getString("login"));
+                activeUser.setName(resultSet.getString("name"));
+                activeUser.setSurname(resultSet.getString("surname"));
+                activeUser.setPassword(resultSet.getString("password"));
+                activeUser.setMail(resultSet.getString("mail"));
+                activeUser.setPhoneNumber(resultSet.getInt("phoneNumber"));
+                activeUser.setRole(resultSet.getString("role"));
 
-                if (utils.hashPassword(logPassword.getText()).equals(passwordFromDB)) {
-                    if (roleFromDB.equals("admin")) {
+
+                if (utils.hashPassword(logPassword.getText()).equals(activeUser.getPassword())) {
+                    if (activeUser.getRole().equals("admin")) {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/adminView.fxml"));
                         Parent mainPage = loader.load();
@@ -78,14 +83,14 @@ public class MainController{
                         AdminController admin= loader.getController();
                         admin.activeAdmin = activeUser;
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        stage.setTitle("Biblioteka, Witaj " + nameFromDB);
+                        stage.setTitle("Biblioteka, Witaj " + activeUser.getName());
                         stage.setScene(scene);
                         stage.setMinWidth(800);
                         stage.setMinHeight(600);
                         stage.setResizable(true);
                         stage.show();
 
-                    }else if (roleFromDB.equals("user")) {
+                    }else if (activeUser.getRole().equals("user")) {
 
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/userView.fxml"));
                         Parent mainPage = (Parent)loader.load();
@@ -93,7 +98,7 @@ public class MainController{
                         user.activeUser = activeUser;
                         Scene scene = new Scene(mainPage, 800, 600);
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        stage.setTitle("Biblioteka, Witaj " + nameFromDB);
+                        stage.setTitle("Biblioteka, Witaj " + activeUser.getName());
                         stage.setScene(scene);
                         stage.setMinWidth(800);
                         stage.setMinHeight(600);

@@ -2,18 +2,13 @@ package pl.lukaszbilski.Library.models;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
-import javafx.util.Callback;
+import pl.lukaszbilski.Library.controllers.EditPasswordController;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
@@ -24,7 +19,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.regex.Pattern;
 
 public class Utils {
@@ -96,9 +90,9 @@ public class Utils {
     }
 
     //method logout user to MainView
-    public void logout(MouseEvent event) throws IOException{
+    public void logout(MenuButton button) throws IOException{
         Parent mainPage = FXMLLoader.load(getClass().getResource("/fxml/mainView.fxml"));
-        Stage stageToClose = (Stage)((Node) event.getSource()).getScene().getWindow();
+        Stage stageToClose = (Stage) button.getScene().getWindow();
         stageToClose.close();
         Stage stage = new Stage();
         stage.setScene(new Scene(mainPage));
@@ -159,5 +153,21 @@ public class Utils {
         }
 
         return rentedBooks;
+    }
+
+    //open edit password controller
+    public void editPassword(User activeUser){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editPassword.fxml"));
+            Parent root = loader.load();
+            EditPasswordController controller = loader.getController();
+            controller.activeUser = activeUser;
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

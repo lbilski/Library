@@ -1,5 +1,6 @@
 package pl.lukaszbilski.Library.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +27,10 @@ import java.util.ResourceBundle;
 public class UserController implements Initializable{
 
     @FXML
-    Button logoutButton, rentBook, wypReturnBook, wypExtortRental;
+    Button rentBook, wypReturnBook, wypExtortRental;
+
+    @FXML
+    MenuButton myAccount;
 
     @FXML
     TextArea descriptionText, wypDescriptionText;
@@ -103,8 +107,6 @@ public class UserController implements Initializable{
         });
 
         tabRentedBooks.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            LocalDate date = LocalDate.now();
-
             if (newValue) {
                 setListOfRentedBooks();
             }
@@ -166,8 +168,12 @@ public class UserController implements Initializable{
         wypReturnBook.setDisable(true);
     }
 
-    public void logout(MouseEvent event) throws IOException {
-        utils.logout(event);
+    public void logout() throws IOException {
+        utils.logout(myAccount);
+    }
+
+    public void editPassword(){
+        utils.editPassword(activeUser);
     }
 
     public void setListOfRentedBooks(){

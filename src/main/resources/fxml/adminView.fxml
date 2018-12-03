@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
@@ -97,23 +96,15 @@
                      </bottom>
                   </BorderPane>
                </content></Tab>
-            <Tab text="Moje Konto">
-               <content>
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Button fx:id="logoutButton" mnemonicParsing="false" onMouseClicked="#logout" text="Wyloguj" />
-                     </children>
-                  </GridPane>
-               </content>
+            <Tab closable="false" style="-fx-padding: 1,5;">
+                <graphic>
+                    <MenuButton fx:id="myAccount" contentDisplay="RIGHT" lineSpacing="1.0" mnemonicParsing="false" text="Moje Konto">
+                        <items>
+                            <MenuItem fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" text="Wyloguj" />
+                            <MenuItem fx:id="myAccountEdit" mnemonicParsing="false" onAction="#editPassword" text="Zmień hasło" />
+                        </items>
+                    </MenuButton>
+                </graphic>
             </Tab>
         </tabs>
       </TabPane>
