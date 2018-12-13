@@ -176,6 +176,10 @@ public class UserController implements Initializable{
         utils.editPassword(activeUser);
     }
 
+    public void editData(){
+        utils.editData(activeUser);
+    }
+
     public void setListOfRentedBooks(){
         LocalDate date = LocalDate.now();
 

@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 import pl.lukaszbilski.Library.controllers.EditPasswordController;
+import pl.lukaszbilski.Library.controllers.EditUserController;
 
 import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
@@ -162,6 +163,22 @@ public class Utils {
             Parent root = loader.load();
             EditPasswordController controller = loader.getController();
             controller.activeUser = activeUser;
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void editData(User activeUser){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/editUser.fxml"));
+            Parent root = loader.load();
+            EditUserController controller = loader.getController();
+            controller.activeUser = activeUser;
+            controller.init();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(false);

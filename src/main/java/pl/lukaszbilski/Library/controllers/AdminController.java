@@ -1,6 +1,5 @@
 package pl.lukaszbilski.Library.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -169,6 +168,10 @@ public class AdminController implements Initializable{
 
     public void editPassword(){
         utils.editPassword(activeAdmin);
+    }
+
+    public void editData(){
+        utils.editData(activeAdmin);
     }
 
     public void logout() throws IOException {
