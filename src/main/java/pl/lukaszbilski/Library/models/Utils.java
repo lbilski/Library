@@ -64,8 +64,8 @@ public class Utils {
         }
     }
 
-    public boolean isEmpty(String input){
-        return (input.trim().length() < 3 || input.trim().length() > 25);
+    public boolean isEmpty(String input) {
+        return input == null || (input.trim().length() < 3 || input.trim().length() > 25);
     }
 
     public boolean regexEmail(String email) {
@@ -74,7 +74,7 @@ public class Utils {
 
     //check phone number is a correct form
     public boolean regexPhone(String phoneNumber) {
-        return !Pattern.matches("\\d{9}", phoneNumber);
+        return phoneNumber == null || !Pattern.matches("\\d{9}", phoneNumber);
     }
 
     //method hashs the password to save it to database in a safe form

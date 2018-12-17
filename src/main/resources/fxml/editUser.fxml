@@ -12,7 +12,12 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="49.0" prefWidth="480.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="closeButton" mnemonicParsing="false" onMouseClicked="#close" text="Zapisz i zamknij">
+            <Button mnemonicParsing="false" onMouseClicked="#saveToDataBase" text="Zapisz">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="closeButton" mnemonicParsing="false" onMouseClicked="#close" text="Zamknij">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -87,6 +92,8 @@
                   <Insets left="5.0" right="5.0" />
                </GridPane.margin>
             </TextField>
+            <Button fx:id="editMail" mnemonicParsing="false" onMouseClicked="#editMail" text="Edytuj" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button fx:id="editPhoneNumber" mnemonicParsing="false" onMouseClicked="#editPhoneNumber" text="Edytuj" GridPane.columnIndex="2" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </center>
