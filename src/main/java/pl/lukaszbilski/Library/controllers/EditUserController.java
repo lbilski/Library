@@ -112,6 +112,4 @@ public class EditUserController {
             editPhoneNumber.setText("Anuluj");
         }
     }
-
-
 }

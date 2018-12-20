@@ -85,9 +85,7 @@ public class MainController{
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stage.setTitle("Biblioteka, Witaj " + activeUser.getName());
                         stage.setScene(scene);
-                        stage.setMinWidth(800);
-                        stage.setMinHeight(600);
-                        stage.setResizable(true);
+
                         stage.show();
 
                     }else if (activeUser.getRole().equals("user")) {
@@ -100,9 +98,7 @@ public class MainController{
                         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         stage.setTitle("Biblioteka, Witaj " + activeUser.getName());
                         stage.setScene(scene);
-                        stage.setMinWidth(800);
-                        stage.setMinHeight(600);
-                        stage.setResizable(true);
+
                         stage.show();
                     }
                 } else {
