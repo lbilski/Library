@@ -28,7 +28,7 @@ Library [Biblioteka] tab was created to display all books with a short descripti
 This TableView updating automatically after user intervention like a new rent. 
 If you don't have a borrowed book, you can book it at your chosen date.
 
-!library tab](https://drive.google.com/uc?export=view&id=1sMIw2DrE5461XPmjGgxm4u0VMxJU3nml)
+![library tab](https://drive.google.com/uc?export=view&id=1sMIw2DrE5461XPmjGgxm4u0VMxJU3nml)
 
 Rented [Wypożyczone] tab display list of books we borrowed and color "Data zwrotu" 
 reminds you of the date of handing over the book. 
